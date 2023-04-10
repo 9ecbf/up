@@ -1,13 +1,11 @@
 FROM node:18.14.2
 
-RUN apt-get update && apt-get upgrade -y
-
-WORKDIR /root/.ssh
-COPY id_rsa ./
-RUN chmod 400 id_rsa
-RUN echo "eval \$(ssh-agent -s) && ssh-add ~/.ssh/id_rsa" >> ~/.bashrc
+WORKDIR /root
+COPY id_rsa .ssh/
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && chmod 400 ~/.ssh/id_rsa \
+    && echo "eval \$(ssh-agent -s) && ssh-add ~/.ssh/id_rsa" >> ~/.bashrc
 
 WORKDIR /9ecbf
-COPY index.js ./
-
-ENTRYPOINT [ "node", "/9ecbf" ]
+ENTRYPOINT [ "tail", "-f", "/dev/null" ]

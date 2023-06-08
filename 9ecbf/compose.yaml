@@ -1,0 +1,9 @@
+services:
+  9ecbf:
+    build:
+      context: .
+      network: host
+    image: 9ecbf:1.0
+    hostname: 9ecbf
+    container_name: 9ecbf
+    network_mode: host

@@ -1,0 +1,14 @@
+services:
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    volumes:
+      - $DOCKER_SOCK:/var/run/docker.sock
+      - portainer:/data
+    ports:
+      - 8000:8000
+      - 9000:9000
+    restart: on-failure
+
+volumes:
+  portainer: {}

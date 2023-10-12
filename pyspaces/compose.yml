@@ -1,0 +1,15 @@
+services:
+  pyspaces:
+    container_name: pyspaces-10
+    image: python:3.10
+    working_dir: /root/workspaces
+    volumes:
+      - ~/Home/pyspaces:/root/workspaces
+    command: tail -f /dev/null
+    networks:
+      - pyspaces
+
+networks:
+  pyspaces:
+    name: pyspaces
+    external: true

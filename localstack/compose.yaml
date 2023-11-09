@@ -1,0 +1,16 @@
+services:
+  localstack:
+    container_name: localstack
+    image: localstack/localstack
+    ports:
+      - 4566:4566 # LocalStack gateway
+      - 4510-4559:4510-4559 # External services port range
+    environment:
+      - DOCKER_HOST=$DOCKER_HOST
+    volumes:
+      - $DOCKER_SOCK:/var/run/docker.sock
+      - localstack:/var/lib/localstack
+
+volumes:
+  localstack:
+    external: true
